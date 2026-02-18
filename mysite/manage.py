@@ -1,6 +1,7 @@
 # Run the commands below to activate venv
 # cd mysite
 # source .venv/bin/activate
+# python manage.py runserver
 
 
 #!/usr/bin/env python
