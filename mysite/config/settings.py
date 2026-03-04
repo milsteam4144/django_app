@@ -25,7 +25,12 @@ SECRET_KEY = "django-insecure-72fi3-^*v)v2ev**sl_9%7$yax36dpf_tg9ip9-z3*pkb8fkpr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    
+"localhost",
+"127.0.0.1",
+".app.github.dev"
+]
 
 
 # Application definition
@@ -39,7 +44,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts"
-
 ]
 
 MIDDLEWARE = [
@@ -57,7 +61,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -118,5 +122,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = "/blue"
+LOGOUT_REDIRECT_URL = '/login/'
+
+CSRF_TRUSTED_ORIGINS = [
+"https://*.app.github.dev",
+"http://localhost:8000",
+]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
